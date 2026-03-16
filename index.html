@@ -1122,135 +1122,200 @@
 <!-- ── VEILLE ── -->
 <section id="veille">
     <div class="container">
+
         <div class="section-label">05 — Veille technologique</div>
         <h2 class="section-title">Monitoring <span>& Supervision IT</span></h2>
 
         <!-- INTRO -->
         <div class="article-row reveal">
             <div class="article-icon-box"><i class="fas fa-search"></i></div>
+
             <div class="article-content">
-                <h4>Introduction à ma veille technologique</h4>
+                <h4>Objectif de ma veille technologique</h4>
 
                 <p>
-                    Ma veille technologique porte sur le <strong>monitoring et la supervision des infrastructures informatiques</strong>.
-                    Dans les entreprises modernes, il est essentiel de surveiller les serveurs, les réseaux et les applications
-                    afin de détecter rapidement les incidents et garantir la disponibilité des services.
+                    Ma veille technologique porte sur les outils de <strong>monitoring et de supervision
+                    des infrastructures informatiques</strong>.
                 </p>
 
                 <p>
-                    Selon plusieurs études, près de <strong>80% des incidents IT sont détectés trop tard sans outils de supervision</strong>.
-                    C’est pourquoi les entreprises utilisent des solutions spécialisées comme
-                    <strong>Prometheus</strong>, <strong>Zabbix</strong> et <strong>Grafana</strong>.
+                    Dans les entreprises modernes, les applications, serveurs et réseaux doivent être surveillés
+                    en permanence afin de détecter les incidents rapidement et garantir la disponibilité
+                    des services.
                 </p>
+
+                <p>
+                    Les outils comme <strong>Prometheus</strong>, <strong>Zabbix</strong> et
+                    <strong>Grafana</strong> sont aujourd’hui largement utilisés dans les environnements
+                    DevOps, Cloud et infrastructures IT.
+                </p>
+            </div>
+        </div>
+
+
+        <!-- ARCHITECTURE -->
+        <div class="article-row reveal">
+            <div class="article-icon-box"><i class="fas fa-network-wired"></i></div>
+
+            <div class="article-content">
+                <h4>Architecture d'une solution de monitoring</h4>
+
+                <p>
+                    Dans une infrastructure moderne, plusieurs outils travaillent ensemble
+                    pour collecter, analyser et afficher les métriques du système.
+                </p>
+
+                <img src="https://grafana.com/static/img/docs/prometheus/architecture.png"
+                     style="width:100%;border-radius:8px;margin-top:10px">
+
+                <p style="margin-top:10px">
+                    Dans cette architecture :
+                </p>
+
+                <ul style="color:var(--c-dim);font-size:.85rem;line-height:1.8">
+                    <li><strong>Prometheus</strong> collecte les métriques des services</li>
+                    <li><strong>Zabbix</strong> supervise les serveurs et le réseau</li>
+                    <li><strong>Grafana</strong> affiche les dashboards</li>
+                </ul>
             </div>
         </div>
 
 
         <!-- PROMETHEUS -->
         <div class="article-row reveal">
-            <img src="https://prometheus.io/assets/prometheus_logo_grey.svg" style="width:80px;margin-right:20px">
+            <img src="https://prometheus.io/assets/prometheus_logo_grey.svg"
+                 style="width:80px;margin-right:20px">
 
             <div class="article-content">
-                <h4>Prometheus : Monitoring Cloud-Natif</h4>
+                <h4>Prometheus</h4>
 
                 <p>
-                    Prometheus est un outil open-source très utilisé dans les environnements modernes
-                    et dans les architectures <strong>cloud-native</strong>.
+                    Prometheus est un système de monitoring open-source développé pour
+                    les environnements <strong>cloud-native</strong>.
                 </p>
 
                 <ul style="color:var(--c-dim);font-size:.85rem;line-height:1.8">
-                    <li>Collecte des métriques en mode <strong>pull via HTTP</strong></li>
-                    <li>Base de données <strong>Time Series (TSDB)</strong></li>
-                    <li>Langage de requête puissant : <strong>PromQL</strong></li>
-                    <li>Très utilisé avec Kubernetes</li>
+                    <li>Collecte des métriques via HTTP</li>
+                    <li>Stockage en base <strong>Time Series Database</strong></li>
+                    <li>Langage de requête <strong>PromQL</strong></li>
+                    <li>Très utilisé avec <strong>Kubernetes</strong></li>
                 </ul>
 
                 <p>
-                    Prometheus fonctionne généralement avec <strong>Grafana</strong>
-                    pour la visualisation et <strong>Alertmanager</strong> pour la gestion des alertes.
+                    Prometheus est devenu un standard dans les architectures DevOps.
                 </p>
 
                 <p>
-                    🔎 Actualité : la version <strong>Prometheus 3.0</strong> sortie en 2024
-                    apporte des améliorations importantes de performance et de compatibilité avec OpenTelemetry.
+                    🔎 <strong>Actualité :</strong> Prometheus 3.0 (2024) améliore
+                    les performances et la compatibilité OpenTelemetry.
                 </p>
-
-                <a href="https://prometheus.io" target="_blank" class="article-link">
-                    Source officielle Prometheus
-                </a>
             </div>
         </div>
 
 
         <!-- ZABBIX -->
         <div class="article-row reveal">
-            <img src="https://assets.zabbix.com/img/logo/zabbix_logo_500x131.png" style="width:120px;margin-right:20px">
+            <img src="https://assets.zabbix.com/img/logo/zabbix_logo_500x131.png"
+                 style="width:120px;margin-right:20px">
 
             <div class="article-content">
-                <h4>Zabbix : Supervision d'infrastructure</h4>
+                <h4>Zabbix</h4>
 
                 <p>
-                    Zabbix est une solution de supervision complète utilisée pour surveiller
-                    les <strong>serveurs, réseaux et applications</strong>.
+                    Zabbix est une solution complète de supervision des infrastructures IT.
                 </p>
 
                 <ul style="color:var(--c-dim);font-size:.85rem;line-height:1.8">
-                    <li>Architecture <strong>serveur + agent</strong></li>
+                    <li>Architecture serveur + agent</li>
                     <li>Support SNMP, IPMI, JMX</li>
-                    <li>Gestion avancée des alertes</li>
-                    <li>Supervision des infrastructures IT complètes</li>
+                    <li>Monitoring des serveurs et réseaux</li>
+                    <li>Système d’alertes avancé</li>
                 </ul>
 
                 <p>
-                    Zabbix est particulièrement adapté aux infrastructures
-                    d'entreprise et aux environnements réseaux complexes.
+                    Il est particulièrement adapté aux infrastructures traditionnelles
+                    d’entreprise.
                 </p>
 
                 <p>
-                    🔎 Actualité : la version <strong>Zabbix 7.4</strong> sortie en 2025 améliore
-                    la haute disponibilité et la gestion des infrastructures à grande échelle.
+                    🔎 <strong>Actualité :</strong> Zabbix 7.4 (2025) améliore la
+                    haute disponibilité et les performances.
                 </p>
-
-                <a href="https://www.zabbix.com" target="_blank" class="article-link">
-                    Source officielle Zabbix
-                </a>
             </div>
         </div>
 
 
         <!-- GRAFANA -->
         <div class="article-row reveal">
-            <img src="https://grafana.com/static/img/menu/grafana2.svg" style="width:90px;margin-right:20px">
+            <img src="https://grafana.com/static/img/menu/grafana2.svg"
+                 style="width:90px;margin-right:20px">
 
             <div class="article-content">
-                <h4>Grafana : Visualisation et dashboards</h4>
+                <h4>Grafana</h4>
 
                 <p>
-                    Grafana est une plateforme de visualisation permettant
-                    d'afficher les métriques collectées par des outils comme
-                    Prometheus ou Zabbix.
+                    Grafana est une plateforme de visualisation utilisée pour afficher
+                    les métriques provenant de nombreuses sources de données.
                 </p>
 
                 <ul style="color:var(--c-dim);font-size:.85rem;line-height:1.8">
-                    <li>Création de tableaux de bord interactifs</li>
-                    <li>Visualisation en temps réel</li>
-                    <li>Analyse des performances</li>
-                    <li>Support de nombreuses sources de données</li>
+                    <li>Création de dashboards interactifs</li>
+                    <li>Visualisation temps réel</li>
+                    <li>Analyse et corrélation de données</li>
+                    <li>Compatible avec Prometheus, Zabbix, InfluxDB, Elasticsearch</li>
                 </ul>
 
                 <p>
-                    Grafana est aujourd’hui l’une des solutions les plus utilisées
-                    pour analyser les données de monitoring.
+                    Grafana permet de centraliser la visualisation des données
+                    de monitoring.
                 </p>
 
                 <p>
-                    🔎 Actualité : la version <strong>Grafana 12</strong> améliore
-                    la performance des dashboards et la gestion des données.
+                    🔎 <strong>Actualité :</strong> Grafana 12 (2025) améliore les
+                    performances et la gestion des dashboards.
                 </p>
+            </div>
+        </div>
 
-                <a href="https://grafana.com" target="_blank" class="article-link">
-                    Source officielle Grafana
-                </a>
+
+        <!-- COMPARAISON -->
+        <div class="article-row reveal">
+            <div class="article-icon-box"><i class="fas fa-chart-bar"></i></div>
+
+            <div class="article-content">
+                <h4>Comparaison Prometheus vs Zabbix</h4>
+
+                <table style="width:100%;border-collapse:collapse;font-size:.85rem">
+                    <tr style="background:var(--c-glass)">
+                        <th style="padding:10px">Critère</th>
+                        <th>Prometheus</th>
+                        <th>Zabbix</th>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px">Type</td>
+                        <td>Cloud-native</td>
+                        <td>Infrastructure IT</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px">Collecte</td>
+                        <td>Pull</td>
+                        <td>Push / Agent</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px">Stockage</td>
+                        <td>TSDB</td>
+                        <td>Base SQL</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding:10px">Utilisation</td>
+                        <td>DevOps / Kubernetes</td>
+                        <td>Réseaux / serveurs</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
@@ -1263,23 +1328,19 @@
                 <h4>Conclusion</h4>
 
                 <p>
-                    Les outils de monitoring permettent d'améliorer la disponibilité
-                    et la performance des infrastructures informatiques.
+                    Les outils de monitoring sont essentiels pour garantir la
+                    disponibilité et la performance des infrastructures informatiques.
                 </p>
 
                 <p>
-                    Une architecture moderne combine souvent :
+                    L’utilisation combinée de <strong>Prometheus</strong>,
+                    <strong>Zabbix</strong> et <strong>Grafana</strong> permet
+                    de construire une solution complète de supervision.
                 </p>
 
-                <ul style="color:var(--c-dim);font-size:.85rem;line-height:1.8">
-                    <li><strong>Prometheus</strong> pour les métriques cloud</li>
-                    <li><strong>Zabbix</strong> pour la supervision réseau</li>
-                    <li><strong>Grafana</strong> pour la visualisation</li>
-                </ul>
-
                 <p>
-                    Cette combinaison permet une <strong>supervision complète et proactive</strong>
-                    des infrastructures informatiques.
+                    Cette approche permet une <strong>détection rapide des incidents
+                    et une meilleure gestion des performances</strong>.
                 </p>
             </div>
         </div>
