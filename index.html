@@ -7,13 +7,13 @@
     <meta name="description" content="Portfolio de Ruben LE FLANCHEC, étudiant en BTS SIO option SISR au Lycée Louis Armand à Nogent-sur-Marne">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --c-bg:#080d14;--c-surface:#0e1620;--c-card:#111c2a;--c-border:rgba(255,255,255,0.07);
             --c-blue:#3b82f6;--c-cyan:#06b6d4;--c-violet:#818cf8;--c-text:#e2e8f0;--c-muted:#64748b;--c-dim:#94a3b8;
-            --radius:14px;--nav-h:68px;--font-head:'Syne',sans-serif;--font-body:'Space Grotesk',sans-serif;--font-mono:'JetBrains Mono',monospace;
+            --radius:14px;--nav-h:72px;--font-head:'Outfit',sans-serif;--font-body:'Space Grotesk',sans-serif;--font-mono:'JetBrains Mono',monospace;
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
@@ -27,8 +27,8 @@
         .logo{font-family:var(--font-head);font-size:1.25rem;font-weight:800;color:var(--c-text);text-decoration:none;display:flex;align-items:center;gap:.6rem;letter-spacing:-.02em}
         .logo-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue),var(--c-cyan));box-shadow:0 0 12px var(--c-blue);animation:pulse-dot 2s ease infinite}
         @keyframes pulse-dot{0%,100%{box-shadow:0 0 8px var(--c-blue)}50%{box-shadow:0 0 20px var(--c-cyan)}}
-        nav ul{display:flex;gap:2rem;list-style:none}
-        nav a{font-size:.9rem;font-weight:500;color:var(--c-muted);text-decoration:none;letter-spacing:.02em;transition:color .25s;position:relative;padding-bottom:2px}
+        nav ul{display:flex;gap:2.8rem;list-style:none}
+        nav a{font-size:1rem;font-weight:600;color:var(--c-muted);text-decoration:none;letter-spacing:.03em;transition:color .25s;position:relative;padding-bottom:3px}
         nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--c-blue),var(--c-cyan));transition:width .3s ease}
         nav a:hover,nav a.active{color:var(--c-text)}
         nav a:hover::after,nav a.active::after{width:100%}
@@ -37,7 +37,7 @@
         .container{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
         .section-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c-cyan);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
         .section-label::before{content:'';display:block;width:24px;height:1px;background:var(--c-cyan)}
-        h2.section-title{font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.04em;margin-bottom:3.5rem;line-height:1.1}
+        h2.section-title{font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.03em;margin-bottom:3.5rem;line-height:1.25;overflow:visible}
         h2.section-title span{background:linear-gradient(120deg,var(--c-blue),var(--c-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         #accueil{background:var(--c-bg)}
         #accueil .mesh-1{width:600px;height:600px;background:radial-gradient(circle,var(--c-blue),transparent 65%);top:-200px;right:-150px;animation:drift 12s ease-in-out infinite}
@@ -46,7 +46,7 @@
         .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
         .hero-text{position:relative;z-index:2}
         .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);border-radius:100px;padding:.35rem 1rem;font-size:.8rem;font-family:var(--font-mono);color:var(--c-blue);margin-bottom:1.5rem}
-        h1.hero-name{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,4.5rem);font-weight:800;letter-spacing:-.05em;line-height:1.05;margin-bottom:.8rem}
+        h1.hero-name{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,4.5rem);font-weight:900;letter-spacing:-.04em;line-height:1.2;margin-bottom:.8rem;overflow:visible}
         .hero-role{font-size:1.1rem;color:var(--c-dim);margin-bottom:2rem;font-weight:400}
         .hero-role strong{color:var(--c-cyan);font-weight:600}
         .hero-stats{display:flex;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
@@ -73,7 +73,7 @@
         .profil-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);padding:2rem;text-align:center;position:sticky;top:calc(var(--nav-h) + 2rem)}
         .profil-avatar{width:140px;height:140px;margin:0 auto 1.5rem;border-radius:50%;overflow:hidden;border:3px solid var(--c-blue);background:var(--c-bg);display:flex;align-items:center;justify-content:center}
         .profil-avatar i{font-size:3rem;color:var(--c-muted)}
-        .profil-name{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:.25rem}
+        .profil-name{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:.25rem;line-height:1.3;overflow:visible}
         .profil-sub{font-size:.85rem;color:var(--c-muted);margin-bottom:1.5rem}
         .profil-links-col{display:flex;flex-direction:column;gap:.7rem}
         .pl-btn{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:8px;color:var(--c-dim);text-decoration:none;font-size:.85rem;font-weight:500;transition:border-color .2s,color .2s,transform .2s}
@@ -109,7 +109,7 @@
         .stage-logo{width:90px;height:90px;flex-shrink:0;border-radius:12px;overflow:hidden;border:1px solid var(--c-border);background:white;display:flex;align-items:center;justify-content:center}
         .stage-logo img{width:100%;height:100%;object-fit:contain;padding:8px}
         .stage-logo i{font-size:2.5rem;color:var(--c-blue)}
-        .stage-title-block h3{font-family:var(--font-head);font-size:1.7rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.03em}
+        .stage-title-block h3{font-family:var(--font-head);font-size:1.7rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.02em;line-height:1.3;overflow:visible}
         .stage-meta{color:var(--c-muted);font-size:.88rem}
         .stage-meta i{color:var(--c-cyan);margin-right:.3rem}
         .stage-periods{display:flex;gap:1rem;margin-top:.8rem;flex-wrap:wrap}
@@ -145,7 +145,7 @@
         .projet-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,13,20,.9))}
         .projet-body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
         .projet-num{font-family:var(--font-mono);font-size:.7rem;color:var(--c-muted);margin-bottom:.5rem;letter-spacing:.1em}
-        .projet-body h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.02em}
+        .projet-body h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em;line-height:1.3;overflow:visible}
         .projet-body p{font-size:.87rem;color:var(--c-dim);margin-bottom:1.2rem;flex:1;line-height:1.7}
         .projet-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
         .ptag{padding:.2rem .7rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:100px;font-size:.75rem;color:var(--c-cyan);font-family:var(--font-mono)}
@@ -160,7 +160,7 @@
         .veille-card:hover .veille-thumb img{transform:scale(1.05)}
         .veille-body{padding:1.6rem;flex:1;display:flex;flex-direction:column}
         .veille-num{font-family:var(--font-mono);font-size:.7rem;color:var(--c-muted);margin-bottom:.5rem;letter-spacing:.1em}
-        .veille-body h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em}
+        .veille-body h3{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.01em;line-height:1.3;overflow:visible}
         .veille-body p{font-size:.87rem;color:var(--c-dim);margin-bottom:1rem;flex:1;line-height:1.7}
         .veille-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
         .veille-ref{display:flex;align-items:center;gap:.6rem;margin-top:.9rem;padding:.6rem .9rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:8px;font-size:.78rem;color:var(--c-dim);font-family:var(--font-mono)}
@@ -277,7 +277,7 @@
                     <a href="#" class="pl-btn" onclick="alert('CV PDF bientôt disponible !');return false;"><i class="fas fa-file-pdf"></i>Mon CV (PDF)</a>
                     <a href="https://www.linkedin.com/in/ruben-sio-139269361/" target="_blank" class="pl-btn"><i class="fab fa-linkedin"></i>LinkedIn</a>
                     <a href="https://github.com/ruben-sio" target="_blank" class="pl-btn"><i class="fab fa-github"></i>GitHub</a>
-                    <a href="mailto:ruben.leflanchec.sio@gmail.com" class="pl-btn"><i class="fas fa-envelope"></i>Email</a>
+                    <a href="/cdn-cgi/l/email-protection#a8daddcacdc686c4cdcec4c9c6cbc0cdcb86dbc1c7e8cfc5c9c1c486cbc7c5" class="pl-btn"><i class="fas fa-envelope"></i>Email</a>
                 </div>
             </div>
             <div class="profil-info reveal reveal-delay-1">
@@ -567,7 +567,7 @@
                 <h3>Restons en contact</h3>
                 <p>N'hésitez pas à me contacter pour toute opportunité professionnelle, stage, alternance ou question concernant mon profil. Je serai ravi d'échanger !</p>
                 <div class="social-stack">
-                    <a href="mailto:ruben.leflanchec.sio@gmail.com" class="social-row"><div class="s-icon"><i class="fas fa-envelope"></i></div><div class="s-text"><strong>Email</strong><span>ruben.leflanchec.sio@gmail.com</span></div></a>
+                    <a href="/cdn-cgi/l/email-protection#85f7f0e7e0ebabe9e0e3e9e4ebe6ede0e6abf6eceac5e2e8e4ece9abe6eae8" class="social-row"><div class="s-icon"><i class="fas fa-envelope"></i></div><div class="s-text"><strong>Email</strong><span><span class="__cf_email__" data-cfemail="45373027202b6b29202329242b262d20266b362c2a052228242c296b262a28">[email&#160;protected]</span></span></div></a>
                     <a href="https://www.linkedin.com/in/ruben-sio-139269361/" target="_blank" class="social-row"><div class="s-icon"><i class="fab fa-linkedin"></i></div><div class="s-text"><strong>LinkedIn</strong><span>Ruben sio</span></div></a>
                     <a href="https://github.com/ruben-sio" target="_blank" class="social-row"><div class="s-icon"><i class="fab fa-github"></i></div><div class="s-text"><strong>GitHub</strong><span>@ruben-sio</span></div></a>
                 </div>
@@ -597,16 +597,11 @@
 
 <button id="scrollTop" aria-label="Haut de page"><i class="fas fa-chevron-up"></i></button>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const nav=document.getElementById('mainNav'),scrollBtn=document.getElementById('scrollTop'),sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('nav a[href^="#"]');
     window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);scrollBtn.classList.toggle('show',window.scrollY>400);let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)c=s.id});navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==`#${c}`)})});
     scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
     document.getElementById('mobileBtn').addEventListener('click',function(){const m=document.getElementById('navMenu');m.classList.toggle('open');this.querySelector('i').className=m.classList.contains('open')?'fas fa-times':'fas fa-bars'});
     navLinks.forEach(a=>{a.addEventListener('click',()=>{document.getElementById('navMenu').classList.remove('open');document.querySelector('#mobileBtn i').className='fas fa-bars'})});
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
-    const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
-    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');this.reset()});
-</script>
-</body>
-</html>
+    const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{threshold:0.12,rootMargin:
