@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruben LE FLANCHEC — Portfolio BTS SIO SISR</title>
+    <meta name="description" content="Portfolio de Ruben LE FLANCHEC, étudiant en BTS SIO option SISR au Lycée Louis Armand à Nogent-sur-Marne">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --c-bg:#080d14;--c-surface:#0e1620;--c-card:#111c2a;--c-border:rgba(255,255,255,0.07);
+            --c-blue:#3b82f6;--c-cyan:#06b6d4;--c-violet:#818cf8;--c-text:#e2e8f0;--c-muted:#64748b;--c-dim:#94a3b8;
+            --radius:14px;--nav-h:72px;--font-head:'Outfit',sans-serif;--font-body:'Space Grotesk',sans-serif;--font-mono:'JetBrains Mono',monospace;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+        body{font-family:var(--font-body);background:var(--c-bg);color:var(--c-text);line-height:1.7;overflow-x:hidden;}
+        body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;}
+        .mesh{position:absolute;pointer-events:none;z-index:0;border-radius:50%;filter:blur(80px);opacity:.18;}
+        img{max-width:100%;height:auto;display:block;}
+        nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(8,13,20,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--c-border);z-index:1000;transition:box-shadow .3s;}
+        nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.5);}
+        .nav-inner{max-width:1200px;margin:0 auto;height:100%;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;}
+        .logo{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--c-text);text-decoration:none;display:flex;align-items:center;gap:.6rem;letter-spacing:-.01em;}
+        .logo-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue),var(--c-cyan));box-shadow:0 0 12px var(--c-blue);animation:pulse-dot 2s ease infinite;}
+        @keyframes pulse-dot{0%,100%{box-shadow:0 0 8px var(--c-blue);}50%{box-shadow:0 0 20px var(--c-cyan);}}
+        nav ul{display:flex;gap:2.8rem;list-style:none;}
+        nav a{font-size:1rem;font-weight:600;color:var(--c-muted);text-decoration:none;letter-spacing:.03em;transition:color .25s;position:relative;padding-bottom:3px;}
+        nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--c-blue),var(--c-cyan));transition:width .3s ease;}
+        nav a:hover,nav a.active{color:var(--c-text);}
+        nav a:hover::after,nav a.active::after{width:100%;}
+        .mobile-toggle{display:none;background:none;border:none;color:var(--c-text);font-size:1.4rem;cursor:pointer;}
+        section{min-height:100vh;padding:calc(var(--nav-h) + 4rem) 2rem 5rem;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+        .container{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1;}
+        .section-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c-cyan);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+        .section-label::before{content:'';display:block;width:24px;height:1px;background:var(--c-cyan);}
+        h2.section-title{font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:3.5rem;line-height:1.25;overflow:visible;}
+        h2.section-title span{background:linear-gradient(120deg,var(--c-blue),var(--c-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        #accueil{background:var(--c-bg);}
+        #accueil .mesh-1{width:600px;height:600px;background:radial-gradient(circle,var(--c-blue),transparent 65%);top:-200px;right:-150px;animation:drift 12s ease-in-out infinite;}
+        #accueil .mesh-2{width:400px;height:400px;background:radial-gradient(circle,var(--c-violet),transparent 65%);bottom:-100px;left:-100px;animation:drift 15s ease-in-out infinite reverse;}
+        @keyframes drift{0%,100%{transform:translate(0,0);}50%{transform:translate(30px,-30px);}}
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+        .hero-text{position:relative;z-index:2;}
+        .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);border-radius:100px;padding:.35rem 1rem;font-size:.8rem;font-family:var(--font-mono);color:var(--c-blue);margin-bottom:1.5rem;}
+        h1.hero-name{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,4.5rem);font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:.8rem;overflow:visible;}
+        .hero-role{font-size:1.1rem;color:var(--c-dim);margin-bottom:2rem;font-weight:400;}
+        .hero-role strong{color:var(--c-cyan);font-weight:600;}
+        .hero-stats{display:flex;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+        .stat{display:flex;flex-direction:column;gap:.15rem;}
+        .stat-num{font-family:var(--font-head);font-size:1.8rem;font-weight:800;line-height:1;background:linear-gradient(120deg,var(--c-blue),var(--c-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .stat-label{font-size:.78rem;color:var(--c-muted);letter-spacing:.04em;text-transform:uppercase;}
+        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+        .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:10px;font-weight:600;font-size:.9rem;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:var(--font-body);}
+        .btn-primary{background:linear-gradient(135deg,var(--c-blue),#2563eb);color:#fff;box-shadow:0 4px 20px rgba(59,130,246,.35);}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(59,130,246,.5);}
+        .btn-ghost{background:transparent;border:1.5px solid var(--c-border);color:var(--c-dim);}
+        .btn-ghost:hover{border-color:var(--c-blue);color:var(--c-text);transform:translateY(-3px);}
+        .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;}
+        .avatar-ring{position:relative;width:260px;height:320px;}
+        .avatar-ring::before{content:'';position:absolute;inset:-3px;border-radius:14px;background:linear-gradient(135deg,var(--c-blue),var(--c-cyan),var(--c-violet));}
+        @keyframes spin-ring{to{transform:rotate(360deg);}}
+        .avatar-inner{position:absolute;inset:3px;border-radius:12px;overflow:hidden;background:#a6a6a6;display:flex;align-items:center;justify-content:center;z-index:1;}
+        .avatar-inner img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+        .float-badge{position:absolute;z-index:3;background:var(--c-card);border:1px solid var(--c-border);border-radius:10px;padding:.5rem .9rem;font-size:.78rem;font-family:var(--font-mono);color:var(--c-cyan);display:flex;align-items:center;gap:.4rem;animation:float-badge 4s ease-in-out infinite;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+        .float-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--c-cyan);}
+        @keyframes float-badge{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+        #profil{background:var(--c-surface);}
+        .profil-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start;}
+        .profil-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);padding:2rem;text-align:center;position:sticky;top:calc(var(--nav-h) + 2rem);}
+        .profil-avatar{width:130px;height:150px;margin:0 auto 1.5rem;border-radius:12px;overflow:hidden;border:3px solid var(--c-blue);box-shadow:0 0 18px rgba(59,130,246,0.5);background:#a6a6a6;display:flex;align-items:center;justify-content:center;}
+        .profil-avatar img{width:100%;height:200%;object-fit:contain;background:var(--c-card);}
+        .profil-name{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:.25rem;line-height:1.3;overflow:visible;}
+        .profil-sub{font-size:.85rem;color:var(--c-muted);margin-bottom:1.5rem;}
+        .profil-links-col{display:flex;flex-direction:column;gap:.7rem;}
+        .pl-btn{display:flex;align-items:center;gap:.7rem;padding:.7rem 1rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:8px;color:var(--c-dim);text-decoration:none;font-size:.85rem;font-weight:500;transition:border-color .2s,color .2s,transform .2s;}
+        .pl-btn i{width:16px;text-align:center;color:var(--c-blue);}
+        .pl-btn:hover{border-color:var(--c-blue);color:var(--c-text);transform:translateX(4px);}
+        .profil-bio{color:var(--c-dim);margin-bottom:2rem;font-size:1rem;line-height:1.8;}
+        .skills-section{margin-bottom:2.5rem;}
+        .skills-section h4{font-family:var(--font-head);font-size:1rem;margin-bottom:1.2rem;color:var(--c-text);}
+        .skills-wrap{display:flex;flex-wrap:wrap;gap:.6rem;}
+        .skill-chip{display:inline-flex;align-items:center;gap:.4rem;padding:.4rem 1rem;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:100px;font-size:.82rem;color:var(--c-blue);font-family:var(--font-mono);transition:background .2s,border-color .2s;}
+        .skill-chip:hover{background:rgba(59,130,246,.18);border-color:var(--c-blue);}
+        #tableau{background:var(--c-bg);}
+        .tableau-wrapper{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--c-border);box-shadow:0 8px 40px rgba(0,0,0,.4);}
+        .tableau-table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:900px;}
+        .tableau-table th,.tableau-table td{padding:.65rem .9rem;border:1px solid var(--c-border);text-align:left;vertical-align:top;}
+        .tableau-head-main{background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(6,182,212,.1));font-family:var(--font-head);font-size:.85rem;font-weight:700;color:var(--c-text);text-align:center;}
+        .tableau-head-comp{background:rgba(59,130,246,.08);font-size:.72rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem;}
+        .tableau-section-row td{background:linear-gradient(90deg,rgba(59,130,246,.1),transparent);font-family:var(--font-head);font-size:.82rem;font-weight:700;color:var(--c-blue);padding:.5rem .9rem;}
+        .tableau-table tbody tr:not(.tableau-section-row):hover td{background:rgba(59,130,246,.04);}
+        .tableau-table td:first-child{color:var(--c-text);font-weight:500;min-width:220px;}
+        .tableau-table td:nth-child(2){color:var(--c-muted);font-family:var(--font-mono);font-size:.72rem;white-space:nowrap;}
+        .check-x{text-align:center;color:var(--c-cyan);font-size:1rem;}
+        .tableau-info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem;}
+        .t-info-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:10px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;}
+        .t-info-card i{color:var(--c-blue);font-size:1rem;width:20px;flex-shrink:0;}
+        .t-info-card span{font-size:.85rem;color:var(--c-dim);}
+        .t-info-card strong{color:var(--c-text);}
+        #entreprise{background:var(--c-surface);}
+        .stage-hero{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);overflow:hidden;margin-bottom:2.5rem;}
+        .stage-header{padding:2.5rem;display:flex;align-items:center;gap:2rem;border-bottom:1px solid var(--c-border);background:linear-gradient(135deg,rgba(59,130,246,.05),transparent);}
+        .stage-logo{width:250px;height:250px;flex-shrink:0;border-radius:12px;overflow:hidden;border:1px solid var(--c-border);background:white;display:flex;align-items:center;justify-content:center;}
+        .stage-logo img{width:100%;height:100%;object-fit:contain;padding:8px;}
+        .stage-logo i{font-size:2.5rem;color:var(--c-blue);}
+        .stage-title-block h3{font-family:var(--font-head);font-size:1.7rem;font-weight:800;margin-bottom:.35rem;letter-spacing:-.01em;line-height:1.3;overflow:visible;}
+        .stage-meta{color:var(--c-muted);font-size:.88rem;}
+        .stage-meta i{color:var(--c-cyan);margin-right:.3rem;}
+        .stage-periods{display:flex;gap:1rem;margin-top:.8rem;flex-wrap:wrap;}
+        .period-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .9rem;border-radius:100px;font-size:.78rem;font-family:var(--font-mono);font-weight:500;}
+        .period-badge.yr1{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);color:var(--c-cyan);}
+        .period-badge.yr2{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);color:var(--c-blue);}
+        .stage-body{padding:2.5rem;}
+        .stage-desc{color:var(--c-dim);font-size:1rem;line-height:1.8;margin-bottom:2rem;}
+        .stage-missions-title{font-family:var(--font-head);font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;line-height:1.3;overflow:visible;}
+        .stage-missions-title::after{content:'';flex:1;height:1px;background:var(--c-border);}
+        .missions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin-bottom:2rem;}
+        .mission-card{padding:1.4rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:10px;transition:border-color .2s,transform .2s;}
+        .mission-card:hover{border-color:var(--c-blue);transform:translateY(-4px);}
+        .mission-icon{width:38px;height:38px;border-radius:8px;background:rgba(59,130,246,.1);display:flex;align-items:center;justify-content:center;color:var(--c-blue);font-size:1rem;margin-bottom:.8rem;}
+        .mission-card h4{font-size:.95rem;margin-bottom:.4rem;color:var(--c-text);line-height:1.3;}
+        .mission-card p{font-size:.83rem;color:var(--c-muted);margin:0;line-height:1.6;}
+        .stage-duo{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
+        .duo-card{padding:1.4rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:10px;}
+        .duo-card h5{font-size:.85rem;color:var(--c-muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.06em;}
+        .duo-card p{color:var(--c-text);font-size:.9rem;margin:0;}
+        .duo-card ul{color:var(--c-dim);font-size:.85rem;padding-left:1.2rem;margin:0;line-height:2;}
+        .tech-badges{display:flex;flex-wrap:wrap;gap:.6rem;}
+        .tech-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .85rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:100px;font-size:.8rem;color:var(--c-dim);font-family:var(--font-mono);}
+        .tech-badge i{color:var(--c-cyan);}
+        #epreuves{background:var(--c-bg);}
+        .projets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+        .projet-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+        .projet-card:hover{border-color:var(--c-blue);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.3);}
+        .projet-thumb{height:180px;overflow:hidden;position:relative;}
+        .projet-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+        .projet-card:hover .projet-thumb img{transform:scale(1.07);}
+        .projet-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,13,20,.9));}
+        .projet-body{padding:1.6rem;flex:1;display:flex;flex-direction:column;}
+        .projet-num{font-family:var(--font-mono);font-size:.7rem;color:var(--c-muted);margin-bottom:.5rem;letter-spacing:.1em;}
+        .projet-body h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em;line-height:1.3;overflow:visible;}
+        .projet-body p{font-size:.87rem;color:var(--c-dim);margin-bottom:1.2rem;flex:1;line-height:1.7;}
+        .projet-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;}
+        .ptag{padding:.2rem .7rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:100px;font-size:.75rem;color:var(--c-cyan);font-family:var(--font-mono);}
+        /* VEILLE */
+        #veille{background:var(--c-surface);}
+        .veille-main-layout{display:flex;flex-direction:column;gap:3rem;}
+        .veille-item-block{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+        .veille-item-block:hover{border-color:var(--c-blue);box-shadow:0 20px 50px rgba(0,0,0,.3);}
+        .veille-left{padding:2rem;display:flex;flex-direction:column;gap:1rem;}
+        .veille-right{background:var(--c-bg);border-left:1px solid var(--c-border);display:flex;flex-direction:column;overflow:hidden;}
+        .veille-slide-img{width:100%;height:100%;object-fit:contain;min-height:300px;max-height:450px;padding:1rem;}
+        .veille-num{font-family:var(--font-mono);font-size:.7rem;color:var(--c-muted);letter-spacing:.1em;}
+        .veille-left h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;letter-spacing:-.01em;line-height:1.3;overflow:visible;}
+        .veille-left p{font-size:.87rem;color:var(--c-dim);line-height:1.7;}
+        .veille-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+        .veille-ref{display:flex;align-items:center;gap:.6rem;padding:.6rem .9rem;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:8px;font-size:.78rem;color:var(--c-dim);font-family:var(--font-mono);}
+        .veille-ref i{color:var(--c-blue);font-size:.9rem;flex-shrink:0;}
+        .veille-ref a{color:var(--c-blue);text-decoration:none;}
+        .veille-ref a:hover{color:var(--c-cyan);text-decoration:underline;}
+        .veille-slide-label{padding:.5rem 1rem;background:rgba(59,130,246,.08);border-bottom:1px solid var(--c-border);font-family:var(--font-mono);font-size:.7rem;color:var(--c-cyan);letter-spacing:.08em;display:flex;align-items:center;gap:.5rem;}
+        /* SOURCES BLOCK */
+        .sources-block{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);padding:2rem;margin-top:1rem;}
+        .sources-block h3{font-family:var(--font-head);font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;padding-bottom:.8rem;border-bottom:1px solid var(--c-border);}
+        .sources-block h3 i{color:var(--c-cyan);}
+        .sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;}
+        .source-item{display:flex;align-items:flex-start;gap:.8rem;padding:.9rem 1rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:8px;font-size:.82rem;}
+        .source-item i{color:var(--c-blue);font-size:.9rem;margin-top:.1rem;flex-shrink:0;width:16px;}
+        .source-item .src-content{flex:1;}
+        .source-item .src-title{color:var(--c-text);font-weight:600;margin-bottom:.2rem;}
+        .source-item .src-desc{color:var(--c-muted);line-height:1.5;}
+        .source-item a{color:var(--c-blue);text-decoration:none;font-family:var(--font-mono);font-size:.75rem;}
+        .source-item a:hover{color:var(--c-cyan);text-decoration:underline;}
+        #contact{background:var(--c-bg);}
+        .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;}
+        .contact-info-block h3{font-family:var(--font-head);font-size:1.5rem;font-weight:800;margin-bottom:1rem;letter-spacing:-.01em;line-height:1.3;overflow:visible;}
+        .contact-info-block p{color:var(--c-dim);font-size:.95rem;margin-bottom:2rem;line-height:1.8;}
+        .social-stack{display:flex;flex-direction:column;gap:.8rem;}
+        .social-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:10px;text-decoration:none;color:var(--c-text);transition:border-color .2s,transform .2s;}
+        .social-row:hover{border-color:var(--c-blue);transform:translateX(6px);}
+        .social-row .s-icon{width:42px;height:42px;flex-shrink:0;border-radius:8px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);display:flex;align-items:center;justify-content:center;color:var(--c-blue);font-size:1.1rem;}
+        .social-row .s-text strong{display:block;font-size:.9rem;}
+        .social-row .s-text span{font-size:.8rem;color:var(--c-muted);}
+        .contact-form-block{display:flex;flex-direction:column;gap:1.2rem;}
+        .fgroup{display:flex;flex-direction:column;gap:.4rem;}
+        .fgroup label{font-size:.83rem;color:var(--c-muted);font-weight:500;letter-spacing:.02em;}
+        .fgroup input,.fgroup textarea{padding:.85rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:8px;color:var(--c-text);font-family:var(--font-body);font-size:.9rem;transition:border-color .2s,box-shadow .2s;resize:none;}
+        .fgroup input:focus,.fgroup textarea:focus{outline:none;border-color:var(--c-blue);box-shadow:0 0 0 3px rgba(59,130,246,.15);}
+        .fgroup textarea{min-height:130px;}
+        footer{background:var(--c-bg);border-top:1px solid var(--c-border);padding:3rem 2rem;text-align:center;}
+        .footer-inner{max-width:1200px;margin:0 auto;}
+        .footer-logo{font-family:var(--font-head);font-size:1.2rem;font-weight:800;margin-bottom:.5rem;line-height:1.3;}
+        .footer-sub{font-size:.83rem;color:var(--c-muted);margin-bottom:1.5rem;}
+        .footer-nav{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+        .footer-nav a{font-size:.83rem;color:var(--c-muted);text-decoration:none;transition:color .2s;}
+        .footer-nav a:hover{color:var(--c-blue);}
+        .footer-copy{font-size:.78rem;color:var(--c-muted);opacity:.6;}
+        #scrollTop{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--c-blue),var(--c-cyan));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:999;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s,visibility .3s,transform .3s;box-shadow:0 4px 20px rgba(59,130,246,.4);}
+        #scrollTop.show{opacity:1;visibility:visible;transform:translateY(0);}
+        #scrollTop:hover{transform:translateY(-4px);}
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+        .reveal.in{opacity:1;transform:translateY(0);}
+        .reveal-delay-1{transition-delay:.1s;}
+        .reveal-delay-2{transition-delay:.2s;}
+        .reveal-delay-3{transition-delay:.3s;}
+        @media(max-width:900px){
+            .hero-grid{grid-template-columns:1fr;text-align:center;gap:3rem;}
+            .hero-stats{justify-content:center;}.hero-actions{justify-content:center;}
+            .profil-grid{grid-template-columns:1fr;}.profil-card{position:static;}
+            .stage-header{flex-direction:column;text-align:center;}.stage-duo{grid-template-columns:1fr;}
+            .contact-grid{grid-template-columns:1fr;}
+        }
+        @media(max-width:768px){
+            .mobile-toggle{display:block;}
+            nav ul{display:none;position:absolute;top:var(--nav-h);left:0;width:100%;flex-direction:column;gap:0;background:rgba(8,13,20,.98);border-bottom:1px solid var(--c-border);}
+            nav ul.open{display:flex;}
+            nav ul li a{display:block;padding:1rem 2rem;border-bottom:1px solid var(--c-border);}
+            .avatar-ring{width:220px;height:220px;}.float-badge{display:none;}
+            .projets-grid{grid-template-columns:1fr;}
+            .sources-grid{grid-template-columns:1fr;}
+        }
+    </style>
+</head>
+
+<body>
+<nav id="mainNav">
+    <div class="nav-inner">
+        <a href="#accueil" class="logo"><span class="logo-dot"></span>Ruben LF</a>
+        <button class="mobile-toggle" id="mobileBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        <ul id="navMenu">
+            <li><a href="#accueil" class="active">Accueil</a></li>
+            <li><a href="#profil">Profil</a></li>
+            <li><a href="#tableau">Tableau</a></li>
+            <li><a href="#entreprise">Stage</a></li>
+            <li><a href="#epreuves">Projets</a></li>
+            <li><a href="#veille">Veille</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="accueil">
+    <div class="mesh mesh-1"></div>
+    <div class="mesh mesh-2"></div>
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-circle" style="font-size:.5rem;color:var(--c-cyan)"></i>
+                    BTS SIO &bull; Option SISR &bull; 2024&ndash;2026
+                </div>
+                <h1 class="hero-name">Ruben<br>LE FLANCHEC</h1>
+                <p class="hero-role">Passionné par les <strong>infrastructures réseaux</strong><br>et la <strong>cybersécurité</strong> &mdash; 19 ans</p>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-num">2</span><span class="stat-label">Années BTS</span></div>
+                    <div class="stat"><span class="stat-num">2</span><span class="stat-label">Stages effectués</span></div>
+                    <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Compétences clés</span></div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#profil" class="btn btn-primary"><i class="fas fa-user"></i> Mon parcours</a>
+                    <a href="#contact" class="btn btn-ghost"><i class="fas fa-envelope"></i> Me contacter</a>
+                    <a href="#" class="btn btn-ghost"><i class="fas fa-file-pdf"></i> Mon CV</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="avatar-ring">
+                    <div class="float-badge" style="top:10px;right:-20px"><span class="dot"></span> Réseaux</div>
+                    <div class="float-badge" style="bottom:40px;left:-40px"><span class="dot"></span> Cybersécurité</div>
+                    <div class="avatar-inner">
+                        <img src="ruben.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROFIL -->
+<section id="profil">
+    <div class="container">
+        <div class="section-label">02 &mdash; Profil</div>
+        <h2 class="section-title">À propos <span>de moi</span></h2>
+        <div class="profil-grid">
+            <div class="profil-card reveal">
+                <div class="profil-avatar">
+                    <img src="ruben.png">
+                </div>
+                <div class="profil-name">Ruben LE FLANCHEC</div>
+                <div class="profil-sub">BTS SIO SISR &middot; Nogent-sur-Marne</div>
+                <div class="profil-links-col">
+                    <a href="#" class="pl-btn"><i class="fas fa-download"></i> Télécharger mon CV</a>
+                    <a href="#" class="pl-btn"><i class="fas fa-file-pdf"></i> Voir mon CV (PDF)</a>
+                    <a href="https://www.linkedin.com/in/ruben-sio-139269361/" target="_blank" class="pl-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/ruben-sio" target="_blank" class="pl-btn"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:ruben.leflanchec.sio@gmail.com" class="pl-btn"><i class="fas fa-envelope"></i> Email</a>
+                </div>
+            </div>
+            <div class="profil-info reveal reveal-delay-1">
+                <p class="profil-bio">Passionné par l'informatique et les technologies réseau depuis mon plus jeune âge, je suis actuellement en 2ème année de BTS SIO option SISR au Lycée Louis Armand à Nogent-sur-Marne. Mon parcours m'a permis de développer des compétences solides en <strong style="color:var(--c-text)">administration systèmes et réseaux</strong>, <strong style="color:var(--c-text)">cybersécurité</strong>, <strong style="color:var(--c-text)">virtualisation</strong> et support technique.</p>
+                <p class="profil-bio" style="margin-top:-.5rem">Curieux et autodidacte, j'apprécie les défis techniques et cherche toujours à optimiser les infrastructures pour les rendre plus performantes et sécurisées. Mes deux stages à la Mairie de La Queue-en-Brie m'ont permis de mettre en pratique ces compétences dans un environnement réel et exigeant.</p>
+                <div class="skills-section">
+                    <h4>Compétences techniques</h4>
+                    <div class="skills-wrap">
+                        <span class="skill-chip"><i class="fas fa-network-wired"></i> Réseaux &amp; VLAN</span>
+                        <span class="skill-chip"><i class="fas fa-shield-alt"></i> Cybersécurité</span>
+                        <span class="skill-chip"><i class="fas fa-server"></i> Windows Server</span>
+                        <span class="skill-chip"><i class="fas fa-cloud"></i> Virtualisation</span>
+                        <span class="skill-chip"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="skill-chip"><i class="fas fa-tools"></i> Support Technique</span>
+                        <span class="skill-chip"><i class="fas fa-database"></i> Active Directory</span>
+                        <span class="skill-chip"><i class="fas fa-eye"></i> Supervision</span>
+                        <span class="skill-chip"><i class="fas fa-ticket-alt"></i> Ticketing</span>
+                    </div>
+                </div>
+                <div class="skills-section">
+                    <h4>Informations</h4>
+                    <div class="skills-wrap">
+                        <span class="skill-chip" style="color:var(--c-violet);border-color:rgba(129,140,248,.3);background:rgba(129,140,248,.08)"><i class="fas fa-graduation-cap"></i> Lycée Louis Armand</span>
+                        <span class="skill-chip" style="color:var(--c-violet);border-color:rgba(129,140,248,.3);background:rgba(129,140,248,.08)"><i class="fas fa-map-marker-alt"></i> Nogent-sur-Marne</span>
+                        <span class="skill-chip" style="color:var(--c-violet);border-color:rgba(129,140,248,.3);background:rgba(129,140,248,.08)"><i class="fas fa-birthday-cake"></i> 19 ans</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TABLEAU DE SYNTHESE -->
+<section id="tableau">
+    <div class="container">
+        <div class="section-label">03 — Épreuve orale E5</div>
+        <h2 class="section-title">Tableau de <span>Synthèse</span></h2>
+        <div class="tableau-info reveal">
+            <div class="t-info-card"><i class="fas fa-user"></i><span><strong>LE FLANCHEC Ruben</strong><br>BTS SIO — Session 2026</span></div>
+            <div class="t-info-card"><i class="fas fa-check-square"></i><span>Option : <strong>SISR</strong></span></div>
+            <div class="t-info-card"><i class="fas fa-globe"></i><span>Portfolio : <a href="https://ruben-sio.github.io" target="_blank" style="color:var(--c-blue)">ruben-sio.github.io</a></span></div>
+        </div>
+        <div class="tableau-wrapper reveal reveal-delay-1">
+            <table class="tableau-table">
+                <thead>
+                    <tr>
+                        <th class="tableau-head-main" colspan="2">Réalisations professionnelles</th>
+                        <th class="tableau-head-comp">Gérer le patrimoine informatique</th>
+                        <th class="tableau-head-comp">Répondre aux incidents et demandes d'assistance</th>
+                        <th class="tableau-head-comp">Développer la présence en ligne</th>
+                        <th class="tableau-head-comp">Travailler en mode projet</th>
+                        <th class="tableau-head-comp">Mettre à disposition un service informatique</th>
+                        <th class="tableau-head-comp">Organiser son développement professionnel</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tableau-section-row"><td colspan="8"><i class="fas fa-graduation-cap" style="margin-right:.5rem"></i>Réalisations en cours de formation</td></tr>
+                    <tr><td>Création d'un site Web (HTML, CSS, SSL)</td><td>22/09/25 → 20/12/25</td><td></td><td></td><td class="check-x">✔</td><td></td><td></td><td></td></tr>
+                    <tr><td>Mise en place d'un AD, base de données et serveur WEB</td><td>22/09/25 → 20/12/25</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Sécurisation de l'Active Directory et Windows Server</td><td>22/09/25 → 20/12/25</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td></td><td></td></tr>
+                    <tr><td>Mise en place d'un serveur GLPI</td><td>17/11/25 → 20/12/25</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td class="check-x">✔</td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Zabbix — Supervision réseau</td><td>11/03/25 → 25/03/25</td><td></td><td></td><td></td><td class="check-x">✔</td><td></td><td></td></tr>
+                    <tr><td>Portfolio HTML/CSS/GitHub Pages/Git</td><td>02/03/25 → 28/03/25</td><td></td><td></td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td></tr>
+                    <tr><td>Stormshield — Pare-feu &amp; filtrage</td><td>03/03/25 → 28/03/25</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td class="check-x">✔</td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Serveur LAMP</td><td>03/03/25 → 28/03/25</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr class="tableau-section-row"><td colspan="8"><i class="fas fa-building" style="margin-right:.5rem"></i>Réalisations en milieu professionnel — 1ère année</td></tr>
+                    <tr><td>Traitement des tickets via GLPI</td><td>26/05/25 → 05/07/25</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td class="check-x">✔</td><td></td><td></td></tr>
+                    <tr><td>Mastérisation des postes, configuration des téléphones Cisco</td><td>27/05/25 → 05/07/25</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Déploiement de postes via script automatisé WDS/MDT</td><td>26/05/25 → 05/07/25</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td class="check-x">✔</td><td></td></tr>
+                    <tr class="tableau-section-row"><td colspan="8"><i class="fas fa-briefcase" style="margin-right:.5rem"></i>Réalisations en milieu professionnel — 2ème année</td></tr>
+                    <tr><td>Traitement des tickets via GLPI</td><td>05/01/26 → 13/02/26</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td class="check-x">✔</td><td></td><td></td></tr>
+                    <tr><td>Configurations des comptes Office 365</td><td>05/01/26 → 13/02/26</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Réseaux Fibre — câblage et raccordement</td><td>05/01/26 → 13/02/26</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td class="check-x">✔</td><td></td></tr>
+                    <tr><td>Gestion des codes d'alarme via Acre Intrusion Connect</td><td>05/01/26 → 13/02/26</td><td class="check-x">✔</td><td class="check-x">✔</td><td></td><td></td><td class="check-x">✔</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- STAGE -->
+<section id="entreprise">
+    <div class="container">
+        <div class="section-label">04 — Expérience professionnelle</div>
+        <h2 class="section-title">Mon <span>Stage</span></h2>
+        <div class="stage-hero reveal">
+            <div class="stage-header">
+                <div class="stage-logo">
+                    <img src="Logo-mairie-LQB.png">
+                </div>
+                <div class="stage-title-block">
+                    <h3>Mairie de La Queue-en-Brie</h3>
+                    <p class="stage-meta">
+                        <i class="fas fa-map-marker-alt"></i> Place du 18-Juin-1940 &middot; 94510 La Queue-en-Brie
+                        &nbsp;|&nbsp;
+                        <i class="fas fa-building"></i> Service Informatique Municipal
+                    </p>
+                    <div class="stage-periods">
+                        <span class="period-badge yr1"><i class="fas fa-calendar-alt"></i> 1ère année — 26 mai → 4 juillet 2025</span>
+                        <span class="period-badge yr2"><i class="fas fa-calendar-alt"></i> 2ème année — 5 janvier → 13 février 2026</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stage-body">
+                <p class="stage-desc">J'ai effectué mes deux périodes de stage au sein du <strong style="color:var(--c-text)">service informatique de la Mairie de La Queue-en-Brie</strong>, une commune du Val-de-Marne (94). Ce stage m'a permis de découvrir et d'intervenir sur l'infrastructure informatique d'une collectivité territoriale, avec des missions variées allant du support aux agents jusqu'à la gestion et la maintenance du parc informatique municipal, en passant par des projets d'infrastructure réseau et de déploiement de postes.</p>
+                <div class="stage-missions-title"><i class="fas fa-tasks" style="color:var(--c-blue)"></i> Missions réalisées</div>
+                <div class="missions-grid">
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-headset"></i></div><h4>Support utilisateurs (Niveau 1 &amp; 2)</h4><p>Assistance et dépannage des agents municipaux sur leurs postes de travail — matériel, logiciel, périphériques et problèmes réseau</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-desktop"></i></div><h4>Gestion du parc informatique</h4><p>Inventaire, maintenance préventive et curative du parc matériel (PC, imprimantes, téléphones, tablettes) via GLPI</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-network-wired"></i></div><h4>Administration réseau</h4><p>Gestion de l'infrastructure réseau locale, configuration des équipements actifs (switches, routeurs), câblage fibre</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-server"></i></div><h4>Administration serveurs Windows</h4><p>Maintenance des serveurs Windows Server, gestion et création de comptes utilisateurs et groupes Active Directory</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-shield-alt"></i></div><h4>Sécurité informatique</h4><p>Application des politiques de sécurité, mises à jour système, gestion antivirus, sensibilisation des agents aux bonnes pratiques</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-ticket-alt"></i></div><h4>Gestion des tickets GLPI</h4><p>Traitement et suivi des incidents remontés par les agents via l'outil GLPI — qualification, résolution et clôture des tickets</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-phone-alt"></i></div><h4>Configuration téléphonie Cisco</h4><p>Mastérisation des postes, configuration et déploiement des téléphones IP Cisco sur le réseau de la mairie</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-cloud"></i></div><h4>Office 365 &amp; Messagerie</h4><p>Configuration et gestion des comptes Office 365 des agents, migration, licences et dépannage de la messagerie Exchange</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-robot"></i></div><h4>Déploiement automatisé WDS/MDT</h4><p>Déploiement de postes de travail via scripts automatisés Windows Deployment Services et Microsoft Deployment Toolkit</p></div>
+                    <div class="mission-card"><div class="mission-icon"><i class="fas fa-bell"></i></div><h4>Système d'alarme Acre</h4><p>Gestion des codes d'alarme des utilisateurs de l'organisation via la plateforme Acre Intrusion Connect</p></div>
+                </div>
+                <div class="stage-missions-title"><i class="fas fa-user-tie" style="color:var(--c-blue)"></i> Encadrement &amp; objectifs pédagogiques</div>
+                <div class="stage-duo">
+                    <div class="duo-card">
+                        <h5>Tuteur de stage</h5>
+                        <p style="color:var(--c-text);font-weight:600;margin-bottom:.2rem">Service Informatique Municipal</p>
+                        <p style="color:var(--c-muted);font-size:.84rem">Mairie de La Queue-en-Brie &middot; 94510 Val-de-Marne</p>
+                    </div>
+                    <div class="duo-card">
+                        <h5>Objectifs pédagogiques</h5>
+                        <ul>
+                            <li>Découvrir l'informatique en collectivité territoriale</li>
+                            <li>Maîtriser le support utilisateurs en environnement réel</li>
+                            <li>Gérer un parc informatique municipal complet</li>
+                            <li>Consolider les compétences réseau &amp; Active Directory</li>
+                            <li>Utiliser et administrer un outil de ticketing (GLPI)</li>
+                            <li>Déployer des postes via WDS/MDT en automatisé</li>
+                            <li>Appréhender la sécurité dans un contexte institutionnel</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-missions-title"><i class="fas fa-microchip" style="color:var(--c-blue)"></i> Technologies utilisées</div>
+                <div class="tech-badges">
+                    <span class="tech-badge"><i class="fab fa-windows"></i> Windows 10/11</span>
+                    <span class="tech-badge"><i class="fas fa-server"></i> Windows Server 2019/2022</span>
+                    <span class="tech-badge"><i class="fas fa-users-cog"></i> Active Directory</span>
+                    <span class="tech-badge"><i class="fas fa-network-wired"></i> LAN / Switches</span>
+                    <span class="tech-badge"><i class="fas fa-print"></i> Gestion imprimantes</span>
+                    <span class="tech-badge"><i class="fas fa-ticket-alt"></i> GLPI</span>
+                    <span class="tech-badge"><i class="fas fa-shield-alt"></i> Antivirus / Sécurité</span>
+                    <span class="tech-badge"><i class="fas fa-phone"></i> Cisco IP Phone</span>
+                    <span class="tech-badge"><i class="fab fa-microsoft"></i> Office 365</span>
+                    <span class="tech-badge"><i class="fas fa-rocket"></i> WDS / MDT</span>
+                    <span class="tech-badge"><i class="fas fa-fire"></i> Pare-feu</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> Acre Intrusion</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJETS -->
+<section id="epreuves">
+    <div class="container">
+        <div class="section-label">05 — Réalisations académiques</div>
+        <h2 class="section-title"><span>Projets</span></h2>
+        <div class="projets-grid">
+            <div class="projet-card reveal">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" alt="Réseau"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 01</div>
+                    <h3>Infrastructure Réseau &amp; VLAN</h3>
+                    <p>Conception et déploiement d'une infrastructure réseau complète pour une PME de 50 postes. Mise en place de VLANs, routage inter-VLAN, services DHCP/DNS, segmentation réseau et sécurisation des accès par ACL.</p>
+                    <div class="projet-tags"><span class="ptag">Cisco</span><span class="ptag">VLAN</span><span class="ptag">Routage</span><span class="ptag">DHCP/DNS</span><span class="ptag">ACL</span></div>
+                </div>
+            </div>
+            <div class="projet-card reveal reveal-delay-1">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="AD"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 02</div>
+                    <h3>Sécurisation Active Directory</h3>
+                    <p>Déploiement et sécurisation d'un environnement Active Directory avec GPO, gestion des droits, politique de mots de passe robuste, délégation d'administration et audit de sécurité complet avec journalisation.</p>
+                    <div class="projet-tags"><span class="ptag">Windows Server</span><span class="ptag">AD DS</span><span class="ptag">GPO</span><span class="ptag">Sécurité</span><span class="ptag">Audit</span></div>
+                </div>
+            </div>
+            <div class="projet-card reveal reveal-delay-2">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Virtualisation"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 03</div>
+                    <h3>Virtualisation &amp; Déploiement WDS/MDT</h3>
+                    <p>Infrastructure virtualisée avec Hyper-V, gestion des ressources et snapshots. Déploiement automatisé de postes via Windows Deployment Services et Microsoft Deployment Toolkit avec scripts personnalisés.</p>
+                    <div class="projet-tags"><span class="ptag">Hyper-V</span><span class="ptag">WDS</span><span class="ptag">MDT</span><span class="ptag">Automation</span></div>
+                </div>
+            </div>
+            <div class="projet-card reveal reveal-delay-3">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="GLPI"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 04</div>
+                    <h3>Serveur GLPI — Helpdesk &amp; ITSM</h3>
+                    <p>Installation et configuration complète d'un serveur GLPI pour la gestion du parc informatique et du helpdesk. Mise en place des catégories de tickets, SLA, base de connaissances et inventaire automatique via FusionInventory.</p>
+                    <div class="projet-tags"><span class="ptag">GLPI</span><span class="ptag">ITSM</span><span class="ptag">Inventaire</span><span class="ptag">FusionInventory</span></div>
+                </div>
+            </div>
+            <div class="projet-card reveal">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&q=80" alt="Stormshield"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 05</div>
+                    <h3>Pare-feu Stormshield</h3>
+                    <p>Configuration et administration d'un pare-feu Stormshield SNS. Mise en place de règles de filtrage, politique de sécurité réseau, VPN, inspection SSL, proxy et journalisation des flux pour une PME.</p>
+                    <div class="projet-tags"><span class="ptag">Stormshield</span><span class="ptag">Pare-feu</span><span class="ptag">VPN</span><span class="ptag">Filtrage</span></div>
+                </div>
+            </div>
+            <div class="projet-card reveal reveal-delay-1">
+                <div class="projet-thumb"><img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=80" alt="Portfolio"></div>
+                <div class="projet-body">
+                    <div class="projet-num">PROJET — 06</div>
+                    <h3>Portfolio Web — GitHub Pages</h3>
+                    <p>Conception et développement d'un portfolio professionnel en HTML5/CSS3 avec animations JavaScript. Déploiement continu via GitHub Actions sur GitHub Pages, gestion de version Git et hébergement SSL/HTTPS.</p>
+                    <div class="projet-tags"><span class="ptag">HTML/CSS</span><span class="ptag">JavaScript</span><span class="ptag">GitHub Pages</span><span class="ptag">Git</span><span class="ptag">SSL</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VEILLE -->
+<section id="veille">
+    <div class="container">
+        <div class="section-label">06 — Veille technologique</div>
+        <h2 class="section-title">Monitoring <span>& Supervision IT</span></h2>
+        <div class="veille-main-layout">
+
+            <!-- VEILLE 1 — Prometheus -->
+            <div class="veille-item-block reveal">
+                <div class="veille-left">
+                    <div class="veille-num">VEILLE — 01 · NOV. 2024</div>
+                    <h3>Prometheus 3.0 — Première maj majeure en 7 ans</h3>
+                    <p>Prometheus passe en version 3.0, marquant sa première mise à jour majeure depuis 7 ans. Au programme : support OpenTelemetry amélioré, Remote Write 2.0, histogrammes natifs, nouvelle interface utilisateur et meilleures performances globales. Découvert via le subreddit r/PrometheusMonitoring.</p>
+                    <div class="veille-tags">
+                        <span class="ptag">Prometheus 3.0</span><span class="ptag">OpenTelemetry</span><span class="ptag">Cloud-Native</span><span class="ptag">TSDB</span>
+                    </div>
+                    <div class="veille-ref">
+                        <i class="fas fa-quote-left"></i>
+                        <span>Prometheus : Le Leader du Monitoring Cloud-Natif — <a href="https://prometheus.io/blog/2024/11/14/prometheus-3-0/" target="_blank">prometheus.io/blog</a></span>
+                    </div>
+                </div>
+                <div class="veille-right">
+                    <div class="veille-slide-label"><i class="fas fa-file-powerpoint"></i>Prometheus</div>
+                    <img class="veille-slide-img" src="prometheus.png">
+                </div>
+            </div>
+
+            <!-- VEILLE 2 — Zabbix -->
+            <div class="veille-item-block reveal reveal-delay-1">
+                <div class="veille-left">
+                    <div class="veille-num">VEILLE — 02 · JUIL. 2025</div>
+                    <h3>Zabbix 7.4 — Moins de travail, plus de profondeur</h3>
+                    <p>Zabbix 7.4 est sorti le 1er juillet 2025 avec un assistant d'hôte pour simplifier la configuration, le LLD imbriqué pour les environnements multi-niveaux, la validation des champs en ligne pour détecter les erreurs instantanément, et l'édition en direct du tableau de bord. Découvert via le compte Twitter officiel @zabbix.</p>
+                    <div class="veille-tags">
+                        <span class="ptag">Zabbix 7.4</span><span class="ptag">SNMP / IPMI</span><span class="ptag">Haute Dispo</span><span class="ptag">LLD</span>
+                    </div>
+                    <div class="veille-ref">
+                        <i class="fas fa-quote-left"></i>
+                        <span>Zabbix : Solution Complète et Mature — <a href="https://www.zabbix.com/whats_new_7_4" target="_blank">zabbix.com/whats_new_7_4</a></span>
+                    </div>
+                </div>
+                <div class="veille-right">
+                    <div class="veille-slide-label"><i class="fas fa-file-powerpoint"></i>Zabbix</div>
+                     <img class="veille-slide-img" src="zabbix.png">
+                </div>
+            </div>
+
+            <!-- VEILLE 3 — Grafana -->
+            <div class="veille-item-block reveal reveal-delay-2">
+                <div class="veille-left">
+                    <div class="veille-num">VEILLE — 03 · SEPT. 2025</div>
+                    <h3>Grafana 12.2 — Observability as Code & IA intégrée</h3>
+                    <p>Grafana 12 introduit le concept d'Observability as Code : gestion des dashboards versionnés avec Git, automatisation CI/CD, expressions SQL optimisées par LLM, rapports simplifiés et plugin source de données Jenkins pour visualiser les pipelines. Découvert via r/grafana sur Reddit.</p>
+                    <div class="veille-tags">
+                        <span class="ptag">Grafana 12</span><span class="ptag">Obs. as Code</span><span class="ptag">LLM / SQL</span><span class="ptag">CI/CD</span>
+                    </div>
+                    <div class="veille-ref">
+                        <i class="fas fa-quote-left"></i>
+                        <span>Grafana : La Plateforme de Visualisation Universelle — <a href="https://grafana.com/blog/2025/05/07/grafana-12-release-all-the-new-features/" target="_blank">grafana.com/blog</a></span>
+                    </div>
+                </div>
+                <div class="veille-right">
+                    <div class="veille-slide-label"><i class="fas fa-file-powerpoint"></i>Grafana</div>
+                    <img class="veille-slide-img" src="grafana.png">
+                </div>
+            </div>
+
+            <!-- SOURCES -->
+            <div class="sources-block reveal">
+                <h3><i class="fas fa-satellite-dish"></i> Sources de veille utilisées</h3>
+                <div class="sources-grid">
+                    <div class="source-item">
+                        <i class="fab fa-reddit-alien"></i>
+                        <div class="src-content">
+                            <div class="src-title">Reddit — r/PrometheusMonitoring</div>
+                            <div class="src-desc">Alerte sur la sortie de Prometheus 3.0 (novembre 2024)</div>
+                        </div>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="src-content">
+                            <div class="src-title">Blog officiel Prometheus</div>
+                            <div class="src-desc">Article de lancement de Prometheus 3.0<br><a href="https://prometheus.io/blog/2024/11/14/prometheus-3-0/" target="_blank">prometheus.io/blog/2024/11/14/prometheus-3-0/</a></div>
+                        </div>
+                    </div>   
+                    <div class="source-item">
+                        <i class="fab fa-reddit-alien"></i>
+                        <div class="src-content">
+                            <div class="src-title">Reddit — r/zabbix</div>
+                            <div class="src-desc">Annonce officielle de Zabbix 7.4 (1er juillet 2025)</div>
+                        </div>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="src-content">
+                            <div class="src-title">Site officiel Zabbix</div>
+                            <div class="src-desc">Page des nouveautés Zabbix 7.4<br><a href="https://www.zabbix.com/whats_new_7_4" target="_blank">zabbix.com/whats_new_7_4</a></div>
+                        </div>
+                    </div>
+                    <div class="source-item">
+                        <i class="fab fa-reddit-alien"></i>
+                        <div class="src-content">
+                            <div class="src-title">Reddit — r/grafana</div>
+                            <div class="src-desc">Alerte sur la sortie de Grafana 12.2 (septembre 2025)</div>
+                        </div>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="src-content">
+                            <div class="src-title">Blog officiel Grafana</div>
+                            <div class="src-desc">Toutes les nouveautés de Grafana 12<br><a href="https://grafana.com/blog/2025/05/07/grafana-12-release-all-the-new-features/" target="_blank">grafana.com/blog — grafana-12-release</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="section-label">07 — Contact</div>
+        <h2 class="section-title">Me <span>contacter</span></h2>
+        <div class="contact-grid">
+            <div class="contact-info-block reveal">
+                <h3>Restons en contact</h3>
+                <p>N'hésitez pas à me contacter pour toute opportunité professionnelle, stage, alternance ou question concernant mon profil. Je serai ravi d'échanger !</p>
+                <div class="social-stack">
+                    <a href="mailto:ruben.leflanchec.sio@gmail.com" class="social-row">
+                        <div class="s-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="s-text"><strong>Email</strong><span>ruben.leflanchec.sio@gmail.com</span></div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ruben-sio-139269361/" target="_blank" class="social-row">
+                        <div class="s-icon"><i class="fab fa-linkedin"></i></div>
+                        <div class="s-text"><strong>LinkedIn</strong><span>Ruben sio</span></div>
+                    </a>
+                    <a href="https://github.com/ruben-sio" target="_blank" class="social-row">
+                        <div class="s-icon"><i class="fab fa-github"></i></div>
+                        <div class="s-text"><strong>GitHub</strong><span>@ruben-sio</span></div>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form-block reveal reveal-delay-1" id="contactForm">
+                <div class="fgroup"><label for="name">Nom complet *</label><input type="text" id="name" name="name" required placeholder="Votre nom et prénom"></div>
+                <div class="fgroup"><label for="email">Email *</label><input type="email" id="email" name="email" required placeholder="votre@email.com"></div>
+                <div class="fgroup"><label for="subject">Sujet</label><input type="text" id="subject" name="subject" placeholder="Objet de votre message"></div>
+                <div class="fgroup"><label for="message">Message *</label><textarea id="message" name="message" required placeholder="Votre message..."></textarea></div>
+                <button type="submit" class="btn btn-primary" style="align-self:flex-start"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-logo">Ruben LE FLANCHEC</div>
+        <div class="footer-sub">BTS SIO option SISR &middot; Lycée Louis Armand, Nogent-sur-Marne</div>
+        <nav class="footer-nav">
+            <a href="#accueil">Accueil</a><a href="#profil">Profil</a><a href="#tableau">Tableau</a>
+            <a href="#entreprise">Stage</a><a href="#epreuves">Projets</a><a href="#veille">Veille</a><a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-copy">&copy; 2026 Ruben LE FLANCHEC &mdash; BTS SIO SISR &mdash; Tous droits réservés</div>
+    </div>
+</footer>
+<button id="scrollTop" aria-label="Haut de page"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+    document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+});
+
+// Mobile menu
+document.getElementById('mobileBtn').addEventListener('click', () => {
+    document.getElementById('navMenu').classList.toggle('open');
+});
+
+// Scroll top
+document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// Active nav
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+            if(active) active.classList.add('active');
+        }
+    });
+}, {rootMargin:'-50% 0px -50% 0px'});
+sections.forEach(s => observer.observe(s));
+
+// Reveal on scroll
+const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
