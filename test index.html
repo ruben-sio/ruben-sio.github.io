@@ -146,14 +146,14 @@
         .projet-body p{font-size:.87rem;color:var(--c-dim);margin-bottom:1.2rem;flex:1;line-height:1.7;}
         .projet-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;}
         .ptag{padding:.2rem .7rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:100px;font-size:.75rem;color:var(--c-cyan);font-family:var(--font-mono);}
-        /* VEILLE */
+        /* VEILLE — layout colonne : description en haut, image en bas */
         #veille{background:var(--c-surface);}
         .veille-main-layout{display:flex;flex-direction:column;gap:3rem;}
-        .veille-item-block{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,box-shadow .25s;}
+        .veille-item-block{display:flex;flex-direction:column;background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--radius);overflow:hidden;transition:border-color .25s,box-shadow .25s;}
         .veille-item-block:hover{border-color:var(--c-blue);box-shadow:0 20px 50px rgba(0,0,0,.3);}
         .veille-left{padding:2rem;display:flex;flex-direction:column;gap:1rem;}
-        .veille-right{background:var(--c-bg);border-left:1px solid var(--c-border);display:flex;flex-direction:column;overflow:hidden;}
-        .veille-slide-img{width:100%;height:100%;object-fit:contain;min-height:300px;max-height:450px;padding:1rem;}
+        .veille-right{background:var(--c-bg);border-top:1px solid var(--c-border);display:flex;flex-direction:column;overflow:hidden;}
+        .veille-slide-img{width:100%;object-fit:contain;max-height:500px;padding:1.5rem;}
         .veille-num{font-family:var(--font-mono);font-size:.7rem;color:var(--c-muted);letter-spacing:.1em;}
         .veille-left h3{font-family:var(--font-head);font-size:1.2rem;font-weight:700;letter-spacing:-.01em;line-height:1.3;overflow:visible;}
         .veille-left p{font-size:.87rem;color:var(--c-dim);line-height:1.7;}
@@ -438,17 +438,25 @@
                 <div class="stage-missions-title"><i class="fas fa-microchip" style="color:var(--c-blue)"></i> Technologies utilisées</div>
                 <div class="tech-badges">
                     <span class="tech-badge"><i class="fab fa-windows"></i> Windows 10/11</span>
-                    <span class="tech-badge"><i class="fas fa-server"></i> Windows Server 2019/2022</span>
-                    <span class="tech-badge"><i class="fas fa-users-cog"></i> Active Directory</span>
+                    <span class="tech-badge"><i class="fas fa-server"></i> Windows Server 2022</span>
+                    <span class="tech-badge"><i class="fas fa-users-cog"></i> AD / GPO</span>
                     <span class="tech-badge"><i class="fas fa-network-wired"></i> LAN / Switches</span>
-                    <span class="tech-badge"><i class="fas fa-print"></i> Gestion imprimantes</span>
                     <span class="tech-badge"><i class="fas fa-ticket-alt"></i> GLPI</span>
                     <span class="tech-badge"><i class="fas fa-shield-alt"></i> Antivirus / Sécurité</span>
-                    <span class="tech-badge"><i class="fas fa-phone"></i> Cisco IP Phone</span>
+                    <span class="tech-badge"><i class="fas fa-phone"></i> Cisco</span>
                     <span class="tech-badge"><i class="fab fa-microsoft"></i> Office 365</span>
                     <span class="tech-badge"><i class="fas fa-rocket"></i> WDS / MDT</span>
-                    <span class="tech-badge"><i class="fas fa-fire"></i> Pare-feu</span>
+                    <span class="tech-badge"><i class="fas fa-fire"></i> Pare-feu / Stormshield</span>
                     <span class="tech-badge"><i class="fas fa-bell"></i> Acre Intrusion</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> Zabbix / Grafana / Prometheus</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> Acre Intrusion</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> NAT / PAT</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> VLAN</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> Docker </span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> DHCP / DNS</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> VPN (OpenVPN / WireGuard)</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> VMware / VirtualBox / Proxmox</span>
+                    <span class="tech-badge"><i class="fas fa-bell"></i> ADCS / PKI</span>
                 </div>
             </div>
         </div>
@@ -523,7 +531,7 @@
 <section id="veille">
     <div class="container">
         <div class="section-label">06 — Veille technologique</div>
-        <h2 class="section-title">Monitoring <span>& Supervision IT</span></h2>
+        <h2 class="section-title">Monitoring <span>&amp; Supervision IT</span></h2>
         <div class="veille-main-layout">
 
             <!-- VEILLE 1 — Prometheus -->
@@ -562,7 +570,7 @@
                 </div>
                 <div class="veille-right">
                     <div class="veille-slide-label"><i class="fas fa-file-powerpoint"></i>Zabbix</div>
-                     <img class="veille-slide-img" src="zabbix.png">
+                    <img class="veille-slide-img" src="zabbix.png">
                 </div>
             </div>
 
@@ -570,7 +578,7 @@
             <div class="veille-item-block reveal reveal-delay-2">
                 <div class="veille-left">
                     <div class="veille-num">VEILLE — 03 · SEPT. 2025</div>
-                    <h3>Grafana 12.2 — Observability as Code & IA intégrée</h3>
+                    <h3>Grafana 12.2 — Observability as Code &amp; IA intégrée</h3>
                     <p>Grafana 12 introduit le concept d'Observability as Code : gestion des dashboards versionnés avec Git, automatisation CI/CD, expressions SQL optimisées par LLM, rapports simplifiés et plugin source de données Jenkins pour visualiser les pipelines. Découvert via r/grafana sur Reddit.</p>
                     <div class="veille-tags">
                         <span class="ptag">Grafana 12</span><span class="ptag">Obs. as Code</span><span class="ptag">LLM / SQL</span><span class="ptag">CI/CD</span>
