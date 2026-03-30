@@ -575,6 +575,40 @@
                 </div>
                 <!-- FIN DOCUMENTS DSI -->
 
+                <!-- GANTT -->
+                <div style="margin-top:2rem;">
+                    <div class="stage-missions-title" style="margin-bottom:1.4rem"><i class="fas fa-project-diagram" style="color:var(--c-blue)"></i> Diagramme de Gantt &mdash; D&eacute;ploiement 24 postes informatiques</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1.2rem;">
+                        <div class="t-info-card" style="flex:1;min-width:160px;"><i class="fas fa-users"></i><span>&Eacute;quipe : <strong>Ruben &middot; Christophe &middot; Omran</strong></span></div>
+                        <div class="t-info-card" style="flex:1;min-width:160px;"><i class="fas fa-desktop"></i><span><strong>36 postes</strong> &agrave; pr&eacute;parer &amp; d&eacute;ployer</span></div>
+                        <div class="t-info-card" style="flex:1;min-width:160px;"><i class="fas fa-calendar-alt"></i><span>Stage 1&egrave;re ann&eacute;e &middot; <strong>26 mai &rarr; 5 juil 2025</strong></span></div>
+                    </div>
+                    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem;font-size:.8rem;font-family:var(--font-mono);">
+                        <span style="display:flex;align-items:center;gap:.4rem;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#3b82f6;flex-shrink:0"></span>Ruben</span>
+                        <span style="display:flex;align-items:center;gap:.4rem;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#ef4444;flex-shrink:0"></span>Christophe</span>
+                        <span style="display:flex;align-items:center;gap:.4rem;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#22c55e;flex-shrink:0"></span>Omran</span>
+                        <span style="display:flex;align-items:center;gap:.4rem;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#8b5cf6;flex-shrink:0"></span>&Eacute;quipe compl&egrave;te</span>
+                        <span style="display:flex;align-items:center;gap:.4rem;"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#f59e0b;flex-shrink:0"></span>Affectation utilisateurs</span>
+                    </div>
+                    <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--c-border);box-shadow:0 8px 40px rgba(0,0,0,.4);">
+                        <table style="width:100%;border-collapse:collapse;font-size:.78rem;min-width:780px;">
+                            <thead>
+                                <tr>
+                                    <th style="background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(6,182,212,.1));font-family:var(--font-head);font-size:.82rem;font-weight:700;color:var(--c-text);padding:.7rem 1rem;border:1px solid var(--c-border);text-align:left;min-width:230px;">T&acirc;che / Phase</th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S1<br><span style="font-size:.62rem;color:var(--c-muted)">26&ndash;30 mai</span></th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S2<br><span style="font-size:.62rem;color:var(--c-muted)">02&ndash;06 juin</span></th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S3<br><span style="font-size:.62rem;color:var(--c-muted)">09&ndash;13 juin</span></th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S4<br><span style="font-size:.62rem;color:var(--c-muted)">16&ndash;20 juin</span></th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S5<br><span style="font-size:.62rem;color:var(--c-muted)">23&ndash;27 juin</span></th>
+                                    <th style="background:rgba(59,130,246,.08);font-size:.7rem;color:var(--c-cyan);font-family:var(--font-mono);text-align:center;padding:.5rem .6rem;border:1px solid var(--c-border);white-space:nowrap;min-width:90px;">S6<br><span style="font-size:.62rem;color:var(--c-muted)">30 juin&ndash;5 juil</span></th>
+                                </tr>
+                            </thead>
+                            <tbody id="ganttBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- FIN GANTT -->
+
             </div>
         </div>
     </div>
@@ -1230,6 +1264,56 @@ const revealObs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* ===================== GANTT ===================== */
+(function(){
+    const CELL = (color) => '<td style="border:1px solid var(--c-border);padding:.35rem .3rem;text-align:center;"><div style="background:'+color+';border-radius:6px;padding:.28rem .4rem;min-height:20px;"></div></td>';
+    const EMPTY = () => '<td style="border:1px solid var(--c-border);padding:.35rem .3rem;"></td>';
+    const SECTION = (label) => '<tr><td colspan="7" style="background:linear-gradient(90deg,rgba(59,130,246,.1),transparent);font-family:var(--font-head);font-size:.8rem;font-weight:700;color:var(--c-blue);padding:.45rem .9rem;border:1px solid var(--c-border)"><i class=\"fas fa-chevron-right\" style=\"margin-right:.4rem;font-size:.65rem\"></i>'+label+'</td></tr>';
+    const ROW = (label, weeks, resp) => {
+        const cells = weeks.map(w => w ? CELL(w) : EMPTY()).join('');
+        return '<tr style="transition:background .15s" onmouseover="this.style.background=\'rgba(59,130,246,.04)\'" onmouseout="this.style.background=\'\'"><td style="border:1px solid var(--c-border);padding:.55rem .9rem;color:var(--c-text);font-weight:500;font-size:.8rem;line-height:1.4;">'+label+'<br><span style="font-size:.68rem;font-family:var(--font-mono);color:var(--c-muted)">'+resp+'</span></td>'+cells+'</tr>';
+    };
+    const B='#3b82f6', R='#ef4444', G='#22c55e', P='#8b5cf6';
+    // S1=26-30mai | S2=2-6juin | S3=9-13juin | S4=16-20juin | S5=23-27juin | S6=30juin-4juil
+    // D&eacute;ploiement commence S2 (semaine 2)
+    const rows = [
+        ['section','Pr&eacute;paration &amp; Configuration'],
+        ['R&eacute;ception &amp; inventaire des 36 postes',              [P,null,null,null,null,null],'&Eacute;quipe compl&egrave;te'],
+        ['Tests script &amp; validation d&eacute;ploiement',             [B,B,null,null,null,null],  'Ruben'],
+        ['section','D&eacute;ploiement par lots (Feuille de Route DSI)'],
+        ['Cr&eacute;ation comptes LDAP (Nom, Pr&eacute;nom, Services)', [null,P,P,P,P,P],           '&Eacute;quipe compl&egrave;te'],
+        ['Installation Antivirus + Firefox + Adobe + OCS',              [null,B,B,B,B,B],           'Ruben'],
+        ['Installation Pack Office + activation licences',              [null,B,B,B,B,B],           'Ruben'],
+        ['D&eacute;ploiement 24 postes',                                [null,B,B,B,B,B],           'Ruben'],
+        ['D&eacute;ploiement 9 postes',                                 [null,R,R,R,R,R],           'Christophe'],
+        ['D&eacute;ploiement 3 postes',                                 [null,G,G,null,null,null],  'Omran'],
+        ['section','Session utilisateur (par poste)'],
+        ['Driver copieur + SCAN TO PC',                                 [null,G,G,G,G,G],           'Omran'],
+        ['Raccourcis INFOCOM + t&eacute;l&eacute;maintenance',         [null,B,B,B,B,B],           'Ruben'],
+        ['Raccourci GLPI + transfert donn&eacute;es utilisateur',      [null,B,B,B,B,B],           'Ruben'],
+        ['Firefox : pop-ups sites infocom + favoris',                   [null,R,R,R,R,R],           'Christophe'],
+        ['Config. VPN t&eacute;l&eacute;travail (DNS + RDP + DHCP)',   [null,B,B,B,B,B],           'Ruben'],
+        ['Installation TeamViewer HOST',                                [null,B,B,B,B,B],           'Ruben'],
+        ['section','GLPI &amp; Inventaire parc'],
+        ['Ajout postes GLPI (S/N, lieu, groupe, commentaires)',        [null,B,B,B,B,B],           'Ruben'],
+        ['Liaison postes aux commandes dans GLPI',                      [null,null,B,B,B,B],        'Ruben'],
+        ['Mise &agrave; jour inventaire Excel parc informatique',      [null,null,P,P,P,P],        '&Eacute;quipe compl&egrave;te'],
+        ['section','Affectation &amp; Cl&ocirc;ture'],
+        ['Affectation finale aux agents mairie (MICHARD, Dercle&hellip;)',[null,null,null,P,P,P],  '&Eacute;quipe compl&egrave;te'],
+        ['Modif. LDAP si changement de service / poste',               [null,null,null,P,P,P],     '&Eacute;quipe compl&egrave;te'],
+        ['Tests finaux &amp; recette utilisateurs',                     [null,null,null,null,P,P],  '&Eacute;quipe compl&egrave;te'],
+        ['Bilan projet &amp; documentation finale',                     [null,null,null,null,null,P],'&Eacute;quipe compl&egrave;te'],
+    ];
+    const tbody = document.getElementById('ganttBody');
+    if(!tbody) return;
+    let html = '';
+    rows.forEach(r => {
+        if(r[0]==='section'){ html += SECTION(r[1]); return; }
+        html += ROW(r[0], r[1], r[2]);
+    });
+    tbody.innerHTML = html;
+})();
 </script>
 </body>
 </html>
